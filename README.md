@@ -1,0 +1,6 @@
+# Machin-learning
+methods for satellite classification
+
+Deep-learning has ability to detect or predict each feature of natural resources. To achieve this goal, the network needs optimum amount of data that has given from a few years ago of objects. After all, the gathered data,  trained for once and makes a unique model. Each object has specific model and can to decryption object without any train data. This paper has proceeded deep learning method to detect the water, vegetation (agriculture) and bare land. Because author did not have any spatial data to train the network. Additionally, water, vegetation (agriculture) and bare land can detect easily by NDVI1. First of all row data-set has made by NDVI’s threshold, and balanced it. Then separated to train, test and validation data. Next step, different machine and deep-learning method applied and accuracy has calculated. The MODEL has built by applying machine and deep-learning method to all balanced data without separate data. Finally the MODEL has acquired, applied to two case studies. Case study small area and case study big area. All results seem good and probably it will better with precise data. Most of incorrect classify has located in the border, between two different features.
+
+In this repository some of Machin learning methods applied to detect 3 objects: water, vegetation and soil.
