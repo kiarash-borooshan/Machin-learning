@@ -71,7 +71,7 @@ print("***************************** \n")
 """" Normal Equation (rounded value export)"""
 ticTrnArea = time.time()
 
-
+StckBandTrnArea = zMyDl_utils.load_sentinel2_img(path + ClpTrnAreaPath)
 
 one = np.ones((StckBandTrnArea.shape[0]))
 oneT = one.reshape(-1, 1)
@@ -81,7 +81,7 @@ del StckBandTrnArea, oneT, one
 
 """ load train area NDVI Re-classed """
 yTrnArea = np.ravel(gdal.Open(path + NDVIReClssTrnAreaPth).ReadAsArray())   # (m, )
-yTrnArea = yTrnArea.reshape(-1, 1) # (m, 1)
+yTrnArea = yTrnArea.reshape(-1, 1)  # (m, 1)
 
 """" apply theeta to train area """
 yHtTrnArea = xTrnArea @ theta
@@ -139,7 +139,7 @@ unique, counts = np.unique(yHtRclss, return_counts=True)
 print("\n Normal Equation Re-clas count balance data for train area: \n",
       dict(zip(unique, counts)))
 
-predictTrnAreaReClssInc =  yHtRclss.copy()
+predictTrnAreaReClssInc = yHtRclss.copy()
 predictTrnAreaReClssInc[np.where(yHtRclss != yTrnArea)] = 10
 
 unique, counts = np.unique(predictTrnAreaReClssInc, return_counts=True)
@@ -186,7 +186,7 @@ del one, oneT, StckBandCsStdy
 
 """ load case study NDVI Re-classed """
 yCsStdy = np.ravel(gdal.Open(path + NDVIReClssCsStdyPth).ReadAsArray())  # (m, )
-yCsStdy = yCsStdy.reshape(-1, 1) # (m, 1)
+yCsStdy = yCsStdy.reshape(-1, 1)  # (m, 1)
 
 """ apply theta to case study """
 yHatCsStdy = xCsStdy @ theta
@@ -265,5 +265,3 @@ zMyDl_utils.export_output_data_set(path + ClpCsStdyPth,
 tocCsStdyReClss = time.time()
 print("Case study duration for Normal Equation Re-Class: %.2f sec"
       % (tocCsStdyReClss - ticCsStdyReClss))
-
-
